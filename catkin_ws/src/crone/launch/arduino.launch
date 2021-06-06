@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+<!-- launches S2 nodes -->
+
+
+    <arg name="tf_broadcaster_delay" default="8.0" /> 
+    <arg name="tf_listener_delay" default="10.0" />  
+    <arg name="map_nav_delay" default="15.0" />  
+    
+
+
+    <!-- rosserial-->
+    <node name="serial_node" pkg="rosserial_arduino" type="serial_node.py" output="screen">
+	<param name="port"              type="string"               value="/dev/arduino"/>
+    	<param name="baud"              type="int"                  value="57600"/>
+    </node>
+
+
+    <!-- debug vect-->
+    <node name="debug_vector" pkg="crone" type="debug_vector" output="screen"/> 
+
+</launch>
