@@ -283,9 +283,6 @@ int main(int argc, char** argv){
     wp_goal_stamped.point.x = wp_goal.x;
     wp_goal_stamped.point.y = wp_goal.y;
     wp_goal_stamped.point.z = wp_goal.z;
-    // wp_goal_stamped.point.x = 5.0;
-    // wp_goal_stamped.point.y = 3.0;
-    // wp_goal_stamped.point.z = 3.0;  // COMENTAR ESTOOOO
 
     // Transformando waypoint goal al marco del dron
     geometry_msgs::PointStamped wp_goal_base;
@@ -422,8 +419,10 @@ int main(int argc, char** argv){
       escala_vel = 1.0; 
 
       // Si se encunetra parcialmente ocupado, reducir la velocidad
-       if (histo_vacio != 0)
+       if (histo_vacio != 0){
          dis_ref = 1.0;
+         escala_vel = 0.5;
+       }
 
       // Convertir celda ganadora en angulos de azimuth y elevacion
       ang_az = res * (x_min + 0.5) - fov_x/2; // Angulo del punto central de la celda en x
